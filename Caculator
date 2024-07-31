@@ -1,0 +1,54 @@
+package com.jsp;
+
+import java.util.Scanner;
+
+public class ContinuousCalculator {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double result = 0;
+        boolean continueCalculating = true;
+
+        System.out.println("Welcome to the Continuous Calculator!");
+
+        while (continueCalculating) {
+            System.out.println("Current result: " + result);
+            System.out.print("Enter an operator (+, -, *, /) or 'q' to quit: ");
+            String operator = scanner.next();
+
+            if (operator.equals("q")) {
+                continueCalculating = false;
+                continue;
+            }
+
+            System.out.print("Enter a number: ");
+            double number = scanner.nextDouble();
+
+            switch (operator) {
+                case "+":
+                    result += number;
+                    break;
+                case "-":
+                    result -= number;
+                    break;
+                case "*":
+                    result *= number;
+                    break;
+                case "/":
+                    if (number != 0) {
+                        result /= number;
+                    } else {
+                        System.out.println("Error! Division by zero is not allowed.");
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid operator! Please enter one of +, -, *, /.");
+                    break;
+            }
+        }
+
+        System.out.println("Final result: " + result);
+        System.out.println("Thank you for using the Continuous Calculator!");
+        scanner.close();
+    }
+}
